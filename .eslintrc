@@ -1,0 +1,27 @@
+{
+  "extends": [
+      "esnext",
+      "eslint:recommended",
+      "plugin:react/recommended"
+  ],
+  "plugins": [
+      "react-hooks"
+  ],
+  "rules": {
+      
+      "react/prop-types": 0,
+      "react/react-in-jsx-scope": 0,
+      "import/prefer-default-export": 0,
+      "import/no-named-as-default-member": 0,
+      "import/no-commonjs": 0,
+      "import/no-namespace": 0,
+      "import/no-nodejs-modules": 0,
+      "no-console": 0,
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
+  },
+  "env": {
+      "es6": true,
+      "node": true
+  }
+}

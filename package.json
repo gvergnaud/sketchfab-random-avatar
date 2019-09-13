@@ -1,0 +1,22 @@
+{
+  "name": "random-avatars",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js > images/img.ppm"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gl": "^4.4.0",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-esnext": "^4.0.0",
+    "eslint-config-recommended": "^4.0.0",
+    "eslint-plugin-react-hooks": "^1.7.0"
+  }
+}
