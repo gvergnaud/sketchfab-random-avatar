@@ -16,7 +16,7 @@ const hexToRgb = hex => {
     : null
 }
 
-const color404 = [
+const colors = [
   '#071b25',
   '#c5e4ed',
   '#e1f1f6',
@@ -29,6 +29,7 @@ const color404 = [
   '#185c7e',
 ]
   .map(hexToRgb)
+  .filter(Boolean)
   .map(vec4)
 
 module.exports = {
@@ -37,19 +38,7 @@ module.exports = {
     'utf8',
   ),
   uniforms: {
-    u_color1: getRandomItem(color404),
-    u_color2: getRandomItem(color404),
-    // u_color1: getRandomItem([
-    //   vec4(hexToRgb('3a1f5d')),
-    //   vec4(hexToRgb('c83660')),
-    //   vec4(hexToRgb('e15249')),
-    //   vec4([20, 170, 217, 255]), // skfbblue
-    // ]),
-    // u_color2: getRandomItem([
-    //   vec4(hexToRgb('3a1f5d')),
-    //   vec4(hexToRgb('c83660')),
-    //   vec4(hexToRgb('e15249')),
-    //   vec4([20, 170, 217, 255]), // skfbblue
-    // ]),
+    u_color1: getRandomItem(colors),
+    u_color2: getRandomItem(colors),
   },
 }

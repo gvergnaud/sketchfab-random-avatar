@@ -1,5 +1,6 @@
 const { curry, pipe } = require('ramda')
 const createGl = require('gl')
+const sharp = require('sharp')
 const {
   initBuffers,
   createShaderProgram,
@@ -27,6 +28,19 @@ const outputPPM = curry((width, height, pixels) => {
       process.stdout.write(pixels[i + j] + ' ')
     }
   }
+})
+
+const outputFile = curry((width, height, pixels) => {
+  sharp(Buffer.from(pixels), {
+    raw: {
+      width,
+      height,
+      channels: 4,
+    },
+  })
+    .resize(width, height)
+    .jpeg()
+    .pipe(process.stdout)
 })
 
 const renderFragmentShader = (fragmentShader, uniforms, gl) => {
@@ -77,9 +91,16 @@ const render = gl => {
 }
 
 const main = pipe(
+  () =>
+    createGl(width, height, {
+      alpha: true,
+      antialias: true,
+      premultipliedAlpha: false,
+      preserveDrawingBuffer: false,
+    }),
   render,
   getPixels(width, height),
-  outputPPM(width, height),
+  outputFile(width, height),
 )
 
-main(createGl(width, height, { preserveDrawingBuffer: true }))
+main()

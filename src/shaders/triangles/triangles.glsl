@@ -81,7 +81,7 @@ float normalize(float minV, float maxV, float v) {
     return minV + v * (maxV - minV);
 }
 
-float tiles = 3.;
+float tiles = 1.;
 const vec2 vel = vec2(1., 0.);
 const vec4 skfbBlue = vec4(20, 170, 217, 255);
 const vec4 orange = vec4(200, 54, 96, 255);
@@ -90,16 +90,16 @@ const vec4 purple = vec4(58, 31, 93, 255);
 void main() {
     // vec4 color1 = orange / vec4(255);
     // vec4 color2 = purple / vec4(255);
-    vec4 color1 = u_color1  / vec4(255);
-    vec4 color2 = u_color2  / vec4(255);
+    vec4 color1 = u_color1 / vec4(255);
+    vec4 color2 = u_color2 / vec4(255);
   
     vec2 uv = coord(gl_FragCoord.xy);
     float time = fract(u_time);
 
-    //   vec2 wave = uv;
-    //   wave.x += sin(uv.y * 5. + u_time) * 0.1;
-    //   wave.y += cos(uv.x * 5. + u_time) * 0.1;
-    //   uv += wave;
+    // vec2 wave = uv;
+    // wave.x += sin(uv.y * 5. + u_time) * 0.1;
+    // wave.y += cos(uv.x * 5. + u_time) * 0.1;
+    // uv += wave;
 
     //   uv += vel * u_time;
 
@@ -107,7 +107,7 @@ void main() {
     uv *= rotation2d(PI / 3.2 * u_time);
 
     // scale
-    uv *= vec2(normalize(1., 2., (1. + sin(u_time)) / 2.));
+    uv *= vec2(normalize(2., 3., (1. + sin(u_time)) / 2.));
 
     // translate
     uv += vec2(normalize(2., 3., u_time));
